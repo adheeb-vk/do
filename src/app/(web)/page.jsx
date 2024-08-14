@@ -10,6 +10,7 @@ function page() {
             width={200}
             height={200}
             alt='Logo'
+            priority={true}
         />
       </h1>
       <p className='mt-6 font-bold text-2xl'>Coming Soon !</p>
