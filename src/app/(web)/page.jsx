@@ -13,7 +13,7 @@ function page() {
             priority={true}
         />
       </h1>
-      <p className='mt-6 font-bold text-2xl'>Coming Soon !</p>
+      <p className='mt-6 font-bold text-2xl'>Coming Soon...!</p>
     </div>
   )
 }
