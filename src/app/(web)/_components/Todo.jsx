@@ -33,6 +33,10 @@ const addToDO = () =>{
     setToDos([newToDo,...toDos])
 }
 
+const date = new Date();
+const year = date.getFullYear();
+const day = date.getDate();
+const month = date.getMonth();
 
   return (
     <div className='w-full'>
@@ -40,7 +44,7 @@ const addToDO = () =>{
         <div className='w-[40%] max-[1280px]:w-[50%] max-[1080px]:w-[60%] max-[980px]:w-[70%] max-[580px]:w-[80%] max-[480px]:w-[90%] mx-[auto]'>
             <h1 className='text-center font-bold text-2xl mb-6'>Things to DO !</h1>
             <div className='mb-6'>
-                <span>Date : 11/11/2024</span>
+                <span>{`DATE: ${day}/${month}/${year}`}</span>
             </div>
             <div className='flex bg-transparent border-2 border-solid rounded-md border-white py-2 px-2 mb-6'>
                 <input value={value} onChange={(e)=> setValue(e.target.value)} className='w-full bg-transparent outline-none font-semibold px-3' maxLength={40} placeholder='What to DO?' type='text'/>
