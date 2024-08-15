@@ -37,7 +37,7 @@ const addToDO = () =>{
   return (
     <div className='w-full'>
       <div className='wrapper'>
-        <div className='w-[40%] mx-[auto]'>
+        <div className='w-[40%] max-[1280px]:w-[50%] max-[1080px]:w-[60%] max-[980px]:w-[70%] max-[580px]:w-[80%] max-[480px]:w-[90%] mx-[auto]'>
             <h1 className='text-center font-bold text-2xl mb-6'>Things to DO !</h1>
             <div className='mb-6'>
                 <span>Date : 11/11/2024</span>
@@ -52,9 +52,9 @@ const addToDO = () =>{
                     }
                 }}>Add</button>
             </div>
-            <div className='py-[30px]'>
+            <div className='p-[30px]'>
                 {toDos.length === 0 ? 
-                <h1 className='font-bold text-xl text-center'>
+                <h1 className='font-bold text-xl text-center max-[380px]:px-[30px]'>
                     Create your new ToDo list
                 </h1> :
                 <ul>
