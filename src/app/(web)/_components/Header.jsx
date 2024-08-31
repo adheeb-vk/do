@@ -11,6 +11,7 @@ function Header() {
                     src={'/logo.png'}
                     width={80}
                     height={80}
+                    alt='logo'
                 />
             </Link>
         </h1>

@@ -7,11 +7,7 @@ function Todo() {
 
 const [value, setValue] = useState("");
 
-const [toDos, setToDos] = useState(Array);
-
-const [storedData, setStoredData] = useState(window.localStorage.getItem("todo_list"))
-// const [localStorageToDos, setLocalStorageToDos] = useState(Array)
-
+const [toDos, setToDos] = useState([]);
 // useEffect(()=>{
 //     const stored_data = window.localStorage.getItem("todo_list")
 //     if(stored_data){
@@ -28,25 +24,39 @@ const [storedData, setStoredData] = useState(window.localStorage.getItem("todo_l
 //     console.log(storedData)
 // },[])
 
+// useEffect(()=>{
+//     if(storedData !== null){
+//         if(storedData.length > 2){
+//             let stored_data = JSON.parse(storedData)
+//             // setToDos(stored_data)
+//             if(toDos.length > 0){
+//                 stored_data.push(toDos)
+//                 localStorage.removeItem("todo_list")
+//                 localStorage.setItem("todo_list", JSON.stringify(stored_data))
+//             }
+//         }else{
+//             if(toDos.length > 0){
+//                 console.log(toDos.length)
+//                 localStorage.removeItem("todo_list")
+//                 localStorage.setItem("todo_list", JSON.stringify(toDos))
+//             }
+//         }
+//     }else{
+//         window.localStorage.setItem("todo_list", JSON.stringify([]))
+//         // console.log(storedData);
+//     }
+// },[toDos])
+
 useEffect(()=>{
-    if(storedData !== null){
-        if(storedData.length > 2){
-            let stored_data = JSON.parse(storedData)
-            if(toDos.length !== 0){
-                stored_data.push(toDos)
-                localStorage.removeItem("todo_list")
-                localStorage.setItem("todo_list", JSON.stringify(stored_data))
-            }
-        }else{
-            if(toDos.length !== 0){
-                console.log(toDos.length)
-                localStorage.removeItem("todo_list")
-                localStorage.setItem("todo_list", JSON.stringify(toDos))
-            }
-        }
-    }else{
-        window.localStorage.setItem("todo_list", JSON.stringify([]))
-        // console.log(storedData);
+    const savedTodos = JSON.parse(localStorage.getItem("todo_list"))
+    if(savedTodos){
+        setToDos(savedTodos)
+    }
+},[])
+
+useEffect(()=>{
+    if(toDos.length > 0){
+        localStorage.setItem("todo_list", JSON.stringify(toDos))
     }
 },[toDos])
 
@@ -55,18 +65,13 @@ const removeToDo = (id) => {
     setToDos(editedtoDos)
 }
 
-const addToDO = (e) =>{
+const addToDO = () =>{
     let newToDo = {
         id: toDos?.length + 1,
         title: value
     }
     setToDos([newToDo,...toDos])
 }
-
-// useEffect(()=>{
-//     localStorageToDos.push(toDos)
-//    window.localStorage.setItem("todo_list",JSON.stringify(localStorageToDos))
-// },[toDos])
 
 const date = new Date();
 const year = date.getFullYear();
