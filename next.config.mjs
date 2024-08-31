@@ -16,7 +16,7 @@ import {
         register: true,
         cacheOnFrontendNav: true,
         fallbacks: {
-            document: "/~offline"
+            document: "@/src/app/(web)/~offline"
         }
       });
       return withPWA(nextConfig);
