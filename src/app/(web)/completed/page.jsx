@@ -59,7 +59,7 @@ const redo = (id) =>{
         <ul className='w-[70%] flex flex-col items-center gap-2 mx-auto'>
           {completedTodos?.map((completedTodo)=>{
             return(
-              <li className='w-full flex items-center justify-between mb-6 border p-2 border-solid border-white'>
+              <li className='w-full flex items-center justify-between mb-6 border p-2 border-solid border-white' key={completedTodo.id}>
                 <div className='w-[80%] flex items-center gap-4 max-[1200px]:w-[80%] max-[700px]:w-[78%] max-[700px]:w-[70%] max-[425px]:w-[68%] max-[380px]:text-sm'>
                   <div>{completedTodo?.id}</div>
                   <p>{completedTodo?.title}</p>
