@@ -85,11 +85,11 @@ const month = date.getMonth();
             }
         }}>test</button> */}
         <div className='w-[40%] max-[1280px]:w-[50%] max-[1080px]:w-[60%] max-[980px]:w-[70%] max-[580px]:w-[80%] max-[480px]:w-[90%] mx-[auto]'>
-            <h1 className='text-center font-bold text-2xl mb-6'>Things to DO !</h1>
+            <h1 className='text-center font-bold text-2xl mb-6 max-[380px]:text-[20px]'>Things to DO !</h1>
             <div className='mb-6'>
                 <span>{`DATE: ${day}/${month}/${year}`}</span>
             </div>
-            <button className={`${isNewTodo ? "bg-red-500" : "bg-green-700"} text-white py-2 px-4 text-black font-bold text-center rounded-md mb-2`} onClick={()=>{
+            <button className={`${isNewTodo ? "bg-red-500" : "bg-green-700"} text-white py-2 px-4 text-black font-bold text-center rounded-md mb-2 max-[380px]:text-sm`} onClick={()=>{
                 if(isNewTodo){
                     setIsNewTodo(false)
                 }else{
@@ -98,11 +98,15 @@ const month = date.getMonth();
             }}>{isNewTodo ? "Back" : "Add New"}</button>
             {isNewTodo ? 
             <div className='flex flex-col bg-transparent border-2 border-solid rounded-md border-white py-2 px-2 mb-6'>
-                <input value={value}
+                <input 
+                    value={value}
                     onChange={(e)=> {
                         handleInput(e)
                     }}
-                    className='w-full bg-transparent text-white mb-2 border-2 rounded-md py-2 border-solid border-white outline-none font-semibold px-3' maxLength={40} placeholder='Enter Title' type='text'/>
+                    className='w-full bg-transparent text-white mb-2 border-2 rounded-md py-2 border-solid border-white outline-none font-semibold px-3' 
+                    maxLength={40} 
+                    placeholder='Enter Title' 
+                    type='text'/>
                 <textarea value={description}
                     onChange={(e)=> {
                         e.preventDefault()
@@ -120,7 +124,7 @@ const month = date.getMonth();
                     }
                 }}>Add</button>
             </div> :
-            <div className='p-[30px]'>
+            <div className='p-[30px] max-[600px]:px-0'>
                 {toDos?.length === 0 ? 
                 <h1 className='font-bold text-xl text-center max-[380px]:text-[18px] max-[345px]:text-[16px]'>
                     Create your new ToDo list
@@ -130,7 +134,7 @@ const month = date.getMonth();
                     {toDos?.map((toDo)=>{
                         return(
                         <li className='w-full flex items-center justify-between mb-6 border p-2 border-solid border-white' key={toDo.id}>
-                            <div className='flex items-center gap-4 max-[800px]:w-[40%]'>
+                            <div className='w-[80%] flex items-center gap-4 max-[1200px]:w-[80%] max-[700px]:w-[78%] max-[700px]:w-[70%] max-[425px]:w-[68%] max-[380px]:text-sm'>
                                 <div>{toDo.id}</div>
                                 <p>{toDo.title}</p>
                             </div>
