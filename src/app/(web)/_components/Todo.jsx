@@ -94,14 +94,23 @@ const month = date.getMonth();
             <div className='mb-6'>
                 <span>{`DATE: ${day}/${month}/${year}`}</span>
             </div>
-            <button className={`${isNewTodo ? "bg-red-500" : "bg-green-700"} text-white py-2 px-4 text-black font-bold text-center rounded-md mb-2 max-[380px]:text-sm`} onClick={()=>{
+            <button className={`${toDos.length > 0 ? "bg-white text-black" : "bg-green-700 text-white"} ${isNewTodo ? "hidden" : ""} py-2 px-4 font-bold text-center rounded-md mb-2 max-[380px]:text-sm`} onClick={()=>{
+                if(toDos.length > 0){
+                    setToDos([])
+                    localStorage.removeItem("todo_list")
+                }else{
+                    setIsNewTodo(true)
+                }
+            }}>{toDos.length > 0 ? "Clear" : "Add New"}</button>
+            {isNewTodo ? 
+            <>
+            <button className={`bg-red-500 text-white py-2 px-4 font-bold text-center rounded-md mb-2 max-[380px]:text-sm`} onClick={()=>{
                 if(isNewTodo){
                     setIsNewTodo(false)
                 }else{
                     setIsNewTodo(true)
                 }
-            }}>{isNewTodo ? "Back" : "Add New"}</button>
-            {isNewTodo ? 
+            }}>Back</button>
             <div className='flex flex-col bg-transparent border-2 border-solid rounded-md border-white py-2 px-2 mb-6'>
                 <input 
                     value={value}
@@ -128,7 +137,8 @@ const month = date.getMonth();
                         setIsNewTodo(false)
                     }
                 }}>Add</button>
-            </div> :
+            </div>
+            </> :
             <div className='p-[30px] max-[600px]:px-0'>
                 {toDos?.length === 0 ? 
                 <h1 className='font-bold text-xl text-center max-[380px]:text-[18px] max-[345px]:text-[16px]'>
@@ -139,8 +149,8 @@ const month = date.getMonth();
                     {toDos?.map((toDo)=>{
                         return(
                         <li className='w-full flex items-center justify-between mb-6 border p-2 border-solid border-white' key={toDo.id}>
-                            <div className='w-[80%] flex items-center gap-4 max-[1200px]:w-[80%] max-[700px]:w-[78%] max-[700px]:w-[70%] max-[425px]:w-[68%] max-[380px]:text-sm'>
-                                <div>{toDo.id}</div>
+                            <div className='w-[80%] flex px-2 items-center gap-4 max-[1200px]:w-[80%] max-[700px]:w-[78%] max-[700px]:w-[70%] max-[425px]:w-[68%] max-[380px]:text-sm'>
+                                <div className='w-2 h-2 rounded-full bg-red-400 border border-red-600 border-solid'></div>
                                 <p>{toDo.title}</p>
                             </div>
                             <div className='flex items-center'>
@@ -174,10 +184,9 @@ const month = date.getMonth();
                         )
                     })}
                 </ul>
-                <button className='py-2 px-3 text-center text-black w-full bg-white rounded-md font-bold' onClick={()=>{
-                    localStorage.removeItem("todo_list")
-                    setToDos([])
-                }}>Clear All</button>
+                <button className='py-2 px-3 text-center text-white bg-green-700 w-full rounded-md font-bold' onClick={()=>{
+                    setIsNewTodo(true)
+                }}>Add new</button>
                 </>
                 }   
             </div>}
