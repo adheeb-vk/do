@@ -54,7 +54,7 @@ const redo = (id) =>{
   return (
     <div className='px-12 py-8'>
       <Link href={"/"} className='py-2 px-4 font-bold bg-white inline-block mb-4 text-black rounded-lg'>Back</Link>
-      <div className='w-full flex justify-center items-center p-8'>
+      <div className='w-full flex justify-center items-center p-8 max-[520px]:px-0'>
         {completedTodos.length > 0 ?
         <ul className='w-[70%] flex flex-col items-center gap-2 mx-auto'>
           {completedTodos?.map((completedTodo)=>{
