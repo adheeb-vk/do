@@ -1,5 +1,5 @@
 "use client"
-import React, { use } from 'react'
+import React from 'react'
 import { useState, useEffect} from 'react'
 import Image from 'next/image'
 
@@ -57,9 +57,9 @@ const handleInput = (e) => {
 const addToCompleted = (id) => {
     let new_completed_todo = toDos.filter(toDo => toDo.id === id)
     if(completedTodos.length > 0){
-        setCompletedTodos([...completedTodos,new_completed_todo])
+        setCompletedTodos([...completedTodos, new_completed_todo?.[0]])
     }else{
-        setCompletedTodos([new_completed_todo])
+        setCompletedTodos(new_completed_todo)
     }
     let editedtoDos = toDos.filter(toDo => toDo.id !== id)
     if(toDos.length === 1){
@@ -154,7 +154,6 @@ const month = date.getMonth();
                                 </button>
                                 <button onClick={(e)=>{
                                     e.preventDefault()
-                                    window.localStorage.clear()
                                     removeToDo(toDo.id)
                                     }
                                     }>
