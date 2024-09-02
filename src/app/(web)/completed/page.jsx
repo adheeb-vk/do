@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-function page() {
+function Page() {
 
 const [completedTodos, setCompletedTodos] = useState([])
 const [toDos, setToDos] = useState([])
@@ -68,7 +68,6 @@ const redo = (id) =>{
                   <button className='mr-4' 
                   onClick={(e)=>{
                     e.preventDefault()
-                    console.log(toDos)
                     redo(completedTodo.id)
                   }}
                   >
@@ -103,4 +102,4 @@ const redo = (id) =>{
   )
 }
 
-export default page
+export default Page
