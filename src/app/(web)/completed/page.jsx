@@ -52,11 +52,11 @@ const redo = (id) =>{
 }
 
   return (
-    <div className='px-12 py-8'>
+    <div className='px-12 py-8 max-[480px]:px-8'>
       <Link href={"/"} className='py-2 px-4 font-bold bg-white inline-block mb-4 text-black rounded-lg'>Back</Link>
       <div className='w-full flex justify-center items-center p-8 max-[520px]:px-0'>
         {completedTodos.length > 0 ?
-        <ul className='w-[70%] flex flex-col items-center gap-2 mx-auto'>
+        <ul className='w-[70%] max-[430px]:w-[90%] max-[380px]:w-full flex flex-col items-center gap-2 mx-auto'>
           {completedTodos?.map((completedTodo)=>{
             return(
               <li className='w-full flex items-center justify-between mb-6 border p-2 border-solid border-white' key={completedTodo.id}>
