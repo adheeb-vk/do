@@ -32,7 +32,12 @@ useEffect(()=>{
 },[completedTodos])
 
 const deleteCompleted = (id) =>{
+  if(completedTodos.length === 1){
     setCompletedTodos(completedTodos.filter(todo => todo.id !== id))
+    localStorage.removeItem("completed_list")
+  }else{
+    setCompletedTodos(completedTodos.filter(todo => todo.id !== id))
+  }
 }
 
 const redo = (id) =>{

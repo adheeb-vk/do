@@ -37,7 +37,12 @@ useEffect(()=>{
 
 const removeToDo = (id) => {
     let editedtoDos = toDos.filter(toDo => toDo.id !== id)
-    setToDos(editedtoDos)
+    if(toDos.length === 1){
+        setToDos(editedtoDos)
+        localStorage.removeItem("todo_list")
+    }else{
+        setToDos(editedtoDos)
+    }
 }
 
 const addToDO = () =>{
