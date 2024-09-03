@@ -2,8 +2,8 @@ import React from 'react'
 
 function TodoDetails({activeDescription, activeTitle, close}) {
   return (
-    <div className='w-full h-full absolute flex items-center justify-center'>
-        <div className='w-full z-10 h-full absolute bg-black opacity-[50%]'></div>
+    <div className='w-full h-full absolute flex items-start justify-center'>
+        <div className='z-10 w-full h-full absolute bg-black opacity-[50%]'></div>
         <div className='z-[100] bg-white w-[90%] mx-auto px-4 py-6 rounded-md'>
             <button onClick={()=>{
                 close()
