@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState, useEffect} from 'react'
 import Image from 'next/image'
+import TodoDetails from './TodoDetails'
 
 function Todo() {
 
@@ -9,8 +10,11 @@ const [value, setValue] = useState("");
 const [toDos, setToDos] = useState([]);
 const [completedTodos, setCompletedTodos] = useState([])
 const [description, setDescription] = useState("")
-
+const [isModal, setModal] = useState(false)
 const [isNewTodo, setIsNewTodo] = useState(false)
+const [activeTitle, setActiveTitle] = useState()
+const [activeDescription, setActiveDescription] = useState()
+
 
 useEffect(()=>{
     const savedTodos = JSON.parse(localStorage.getItem("todo_list"))
@@ -80,9 +84,14 @@ const year = date.getFullYear();
 const day = date.getDate();
 const month = date.getMonth();
 
+const close = () => {
+    setModal(false)
+}
+
   return (
     <div className='w-full'>
-      <div className='wrapper'>
+      {isModal ? <TodoDetails activeDescription={activeDescription} activeTitle={activeTitle} close={close}/> : null}
+      <div className='wrapper py-10'>
         {/* <button className='py-3 px-4 bg-red-400' onClick={(e)=>{
             e.preventDefault()
             if(completedTodos.length > 0){
@@ -125,7 +134,6 @@ const month = date.getMonth();
                     onChange={(e)=> {
                         e.preventDefault()
                         setDescription(e.target.value)
-                        console.log(description)
                     }}
                     className='w-full bg-transparent text-white border-2 rounded-md py-2 border-solid border-white mb-2 outline-none px-3' placeholder='Enter Description'/>
                 <button type='submit' className='py-2 px-3 bg-white text-black font-bold rounded-md' onClick={(e)=>{
@@ -149,7 +157,11 @@ const month = date.getMonth();
                     {toDos?.map((toDo)=>{
                         return(
                         <li className='w-full flex items-center justify-between mb-6 border p-2 border-solid border-white' key={toDo.id}>
-                            <div className='w-[80%] flex px-2 items-center gap-4 max-[1200px]:w-[80%] max-[700px]:w-[78%] max-[700px]:w-[70%] max-[425px]:w-[68%] max-[380px]:text-sm'>
+                            <div onClick={()=>{
+                                setActiveTitle(toDo.title)
+                                setActiveDescription(toDo.description)
+                                setModal(true)
+                            }} className='w-[80%] flex px-2 items-center gap-4 max-[1200px]:w-[80%] max-[700px]:w-[78%] max-[700px]:w-[70%] max-[425px]:w-[68%] max-[380px]:text-sm'>
                                 <div className='w-2 h-2 rounded-full bg-red-400 border border-red-600 border-solid'></div>
                                 <p>{toDo.title}</p>
                             </div>
